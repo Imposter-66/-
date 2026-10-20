@@ -1080,7 +1080,13 @@
 
                         if (dist < 180) {
                             setTimeout(() => {
-                                if (planetGroups[id]) explodePlanet(id);
+                                if (planetGroups[id]) {
+                                    if (otherData.type === 'sun' || otherData.type === 'star') {
+                                        explodeSupernova(id);
+                                    } else {
+                                        explodePlanet(id);
+                                    }
+                                }
                             }, 300 + dist * 5);
                         } else {
                             otherData.distance += 400;
